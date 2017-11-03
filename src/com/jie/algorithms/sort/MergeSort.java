@@ -1,5 +1,8 @@
 package com.jie.algorithms.sort;
 
+
+import java.util.Arrays;
+
 /**
  * Created by IntelliJ IDEA
  * @author fengjie
@@ -9,7 +12,14 @@ package com.jie.algorithms.sort;
  */
 public class MergeSort
 {
-    public static int[] merge(int [] a,int p, int q,int r){
+    /**
+     * 原始版本，自己提供一个分好的数组
+     * @param a
+     * @param p
+     * @param q
+     * @param r
+     */
+    public static void merge(int [] a,int p, int q,int r){
         //计算每个分数组的大小，除了哨兵之外
         int n1 = q-p+1;
         int n2 = r-q;
@@ -37,11 +47,24 @@ public class MergeSort
                 j++;
             }
         }
-        return null;
     }
 
+    /**
+     * 递归自己分组
+     * @param a
+     * @param p
+     * @param r
+     */
+    public static void mergeSort(int [] a,int p,int r){
+        if(p < r){
+            int q = (p+r)/2;
+            mergeSort(a,p,q);
+            mergeSort(a,q+1,r);
+            merge(a,p,q,r);
+        }
+    }
     public static void main(String[] args) {
         int a[] = {67,24,1,3,5,7,2,4,6,8};
-        merge(a,2,5,9);
+        mergeSort(a,2,9);
     }
 }
