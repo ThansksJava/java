@@ -66,5 +66,6 @@ public class MergeSort
     public static void main(String[] args) {
         int a[] = {67,24,1,3,5,7,2,4,6,8};
         mergeSort(a,2,9);
+        System.out.println(Arrays.toString(a));
     }
 }
