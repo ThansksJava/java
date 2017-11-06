@@ -17,9 +17,8 @@ public class ImproveMergeSort
         if(index[mid] <= index[mid+1]) {
             return;
         }
-        //3、改进三 交换参数避免数组复制???
+        //3、改进三 交换参数避免数组复制??? 还没写呢
 
-/*
         int len = index.length;
         // copy to aux[]
         int[] aux = new int[len];
@@ -39,7 +38,6 @@ public class ImproveMergeSort
                 index[k] = aux[i++];
             }
         }
-*/
     }
     public static void insert(int[] a,int p,int r)
     {
