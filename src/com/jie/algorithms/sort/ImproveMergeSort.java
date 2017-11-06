@@ -4,9 +4,8 @@ import java.util.Arrays;
 
 /**
  * Created by IntelliJ IDEA
- *
  * @author fengjie
- * @Description
+ * @Description 改进后的归并排序
  * @Date Created in 2017/11/3
  * @Time 14:57
  */
