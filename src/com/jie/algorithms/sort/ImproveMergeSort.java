@@ -11,16 +11,14 @@ import java.util.Arrays;
  */
 public class ImproveMergeSort
 {
-    private static void merge(int[] index, int lo, int mid, int hi) {
+    private static void merge(int[] index,int [] aux,int lo, int mid, int hi) {
         //2、改进二
         if(index[mid] <= index[mid+1]) {
             return;
         }
         //3、改进三 交换参数避免数组复制??? 还没写呢
 
-        int len = index.length;
         // copy to aux[]
-        int[] aux = new int[len];
         for (int k = lo;k <= hi; k++) {
             aux[k] = index[k];
         }
@@ -50,7 +48,7 @@ public class ImproveMergeSort
             a[j+1] = key;
         }
     }
-    public static void mergeSort(int [] a,int p,int r){
+    public static void mergeSort(int [] a,int[] aux,int p,int r){
         //1、改进一
         int insertSortValue = 5;
         if((r-p+1) <= insertSortValue){
@@ -58,10 +56,19 @@ public class ImproveMergeSort
         }
         if(p < r){
             int q = (p+r)/2;
-            mergeSort(a,p,q);
-            mergeSort(a,q+1,r);
-            merge(a,p,q,r);
+            mergeSort(a,aux,p,q);
+            mergeSort(a,aux,q+1,r);
+            merge(a,aux,p,q,r);
         }
+    }
+    public static void mergeSort(int [] a){
+        int [] aux = new int[a.length];
+        mergeSort(a,aux,0,a.length-1);
+
+    }
+    public static boolean isSorted(int[] index, int mid)
+    {
+        return index[mid] < index[mid+1];
     }
     public static void main(String[] args) {
         int [] a = new int[]{5,7,8,1,2,7,45,67,3,
@@ -69,7 +76,7 @@ public class ImproveMergeSort
                 221,2,2,5,25,7,28,4,45,23,6,427,52,
                 6,52,7,236,23,4,3265,4,3,546,123,34,87,45,636,3,23421,4325};
         System.out.println("排序前："+Arrays.toString(a));
-        mergeSort(a,5,20);
+        mergeSort(a);
         System.out.println("排序后："+Arrays.toString(a));
     }
 }
