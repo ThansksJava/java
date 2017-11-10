@@ -1,6 +1,6 @@
 package com.jie.algorithms.sort;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * Created by IntelliJ IDEA
@@ -30,8 +30,14 @@ public class QuickSort {
         a[j] = temp;
     }
     public static void main(String[] args) {
-        int [] a = {1,4,2,9,3,7,4,8,5};
-        sort(a);
-        System.out.println(Arrays.toString(a));
+//        int [] a = {1,4,2,9,3,7,4,8,5};
+//        sort(a);
+//        System.out.println(Arrays.toString(a));
+//
+        Integer [] a = new Integer[]{1, 4, 2, 9, 3, 7, 4, 8, 5};
+        List<Integer> list = new ArrayList<>(Arrays.asList(a));
+        System.out.println(list);
+        Collections.shuffle(list,new Random(10));
+        System.out.println(list);
     }
 }
