@@ -64,5 +64,59 @@ public class BinarySearchTree<Key extends Comparable<Key>,Value> {
         }
         return node;
     }
+    public Key min()
+    {
+        return min(root).key;
+    }
+    public Node min(Node node){
+        if (node.left == null) return node;
+        return min(node.left);
+    }
+    public Key floor(Key key) {
+        Node x = floor(root, key);
+        if (x == null) return null;
+        return x.key;
+    }
+
+    public Node floor(Node x,Key key){
+        if(x == null) return null;
+        int cmp = key.compareTo(x.key);
+        if(cmp == 0){
+            return x;
+        }
+        if(cmp < 0) return floor(x.left,key);
+        //下面是cmp >0 的实现，如果传入的key大于二叉树的跟的话，那么小于等于
+        // key的最大值只可能出现在右子树中
+        Node t =floor(x.right,key);
+        if(t != null) return t;
+        else return x;
+    }
+    public Key select(int k){
+        return select(root,k).key;
+    }
+    public Node select(Node x,int k){
+        if(x == null){
+            return null;
+        }
+        int t = size(x.left);
+        if( t > k) return select(x.left,k);
+        else if(t < k) return select(x.right,t-k-1);
+        else return x;
+    }
+    public int rank(Key key){
+        return rank(root,key);
+    }
+    public int rank(Node x,Key key){
+        if(x == null) return 0;
+        int cmp = key.compareTo(x.key);
+        if(cmp < 0){
+            return rank(x.left,key);
+        }else if(cmp > 0){
+            return size(x.left)+1+rank(x.right,key);
+        }
+        else{
+            return size(x.left);
+        }
+    }
 
 }
