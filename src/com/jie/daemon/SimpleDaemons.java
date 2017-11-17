@@ -2,7 +2,6 @@ package com.jie.daemon;
 
 /**
  * Created by IntelliJ IDEA.
- *
  * @author fengjie
  * @Description
  * @Date Created in 17-10-25
@@ -21,7 +20,6 @@ public class SimpleDaemons implements Runnable{
             }
         }
     }
-
     public static void main(String[] args) throws InterruptedException {
         for(int i = 0;i < 10;i++)
         {
