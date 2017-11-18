@@ -118,5 +118,38 @@ public class BinarySearchTree<Key extends Comparable<Key>,Value> {
             return size(x.left);
         }
     }
+    public void deleteMin(){
+        root = deleteMin(root);
+    }
+    private Node deleteMin(Node x){
+        if(x.left == null) {
+            return x.right;
+        }
+        //上一层的x的left等于下一层的x的
+        x.left = deleteMin(x.left);
+        x.n = size(x.left)+size(x.right)+1;
+        return x;
+    }
+    public void delete(Key key){
+        root = delete(root,key);
+    }
+    private Node delete(Node node,Key key){
+        if(node == null) return null;
+        int cmp = key.compareTo(node.key);
+        if(cmp < 0){
+            node.left = delete(node.left,key);
+        }else if(cmp > 0){
+            node.right = delete(node.right,key);
+        }else{
+            if(node.right == null) return node.left;
+            if(node.left== null) return node.right;
+            Node t = node;
+            node = min(t.right);
+            node.right = deleteMin(t.right);
+            node.left = t.left;
+        }
+        node.n = size(node.left) + size(node.right) + 1;
+        return node;
+    }
 
 }
