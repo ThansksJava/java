@@ -1,5 +1,4 @@
 package com.jie.algorithms.search;
-
 /**
  * Created by IntelliJ IDEA
  * @author  fengjie
