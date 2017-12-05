@@ -26,4 +26,8 @@ public class HeroFight extends AlsoFight implements CanFight
     public void fight() {
         int i = 0;
     }
+
+    public static void main(String[] args) {
+
+    }
 }
